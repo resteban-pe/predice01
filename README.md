@@ -1,0 +1,1 @@
+# G2_laptop_price_prediccion
