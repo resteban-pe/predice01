@@ -30,8 +30,10 @@ type_notebook = 1 if type_notebook == 'Sí' else 0
 # Botón para realizar predicción
 if st.button('Predecir Precio'):
     # Crear DataFrame con las entradas
-    input_data = pd.DataFrame([[ghz, ram, screen_width, screen_height, inches,  type_gaming, type_notebook]],
-                    columns=['GHz','Ram', 'screen_width', 'screen_height', 'Inches','TypeName_Gaming', 'TypeName_Notebook'])
+    #input_data = pd.DataFrame([[ghz, ram, screen_width, screen_height, inches,  type_gaming, type_notebook]],
+    #                columns=['GHz','Ram', 'screen_width', 'screen_height', 'Inches','TypeName_Gaming', 'TypeName_Notebook'])
+    input_data = pd.DataFrame([[ghz, ram, screen_width, screen_height, inches]],
+                    columns=['GHz','Ram', 'screen_width', 'screen_height', 'Inches'])
 
     # Estandarización de las características
     scaler = StandardScaler()
@@ -39,6 +41,11 @@ if st.button('Predecir Precio'):
 
     # Realizar predicción
     prediction = modelo.predict(input_scaled)
+
+    # Mostrar predicción
+    st.write(f'Precio predecido: {prediction[0]:.2f} euros')
+
+
 
     # Mostrar predicción
     st.write(f'Precio predecido: {prediction[0]:.2f} euros')
